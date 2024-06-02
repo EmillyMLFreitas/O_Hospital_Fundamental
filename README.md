@@ -56,4 +56,38 @@ Os relacionamentos atualizados entre as entidades são:
 ![Hospital_ModelagemConceitual_Atualizado](Hospital_ModelagemConceitual_Atualizado.jpg)
 
 ## 🌐 Modelo Lógico
-![Hospital_ModelagemLogica](Hospital_ModelagemLogica.png)
+![Hospital_ModelagemLogica](Hospital_Modelagem_Logica.png)
+
+
+> ### Parte 3
+> Alimentação do Database <br/>
+> Modelo Físico 
+
+## 🌐 Modelo Físico
+Nesta etapa, foram desenvolvidos scripts SQL para criar e povoar as tabelas do banco de dados do Hospital Fundamental, de acordo com o modelo lógico
+
+## Criação do Banco de Dados 
+- 🥼 Exemplo da criação da Tabela Espcialidade
+
+```sql
+CREATE TABLE IF NOT EXISTS Especialidade (
+    Id_especialidade INT AUTO_INCREMENT PRIMARY KEY,
+    Nome_especialidade VARCHAR(255)
+);
+```
+🔗 [Hospital.sql](https://github.com/EmillyMLFreitas/O_Hospital_Fundamental/blob/main/Hospital.sql)
+
+## Povoamento do Banco de Dados 
+- 🧑🏽‍⚕ Exemplo da inserção de dados na Tabela Espcialidade
+
+```sql
+INSERT INTO especialidade (Nome_especialidade) VALUES 
+('Pediatria'),
+('Clínica Geral'),
+('Gastrenterologia'),
+('Dermatologia'),
+('Cardiologia'),
+('Neurologia'),
+('Oftalmologia');
+```
+🔗 [Hospital_Povoamento.sql](https://github.com/EmillyMLFreitas/O_Hospital_Fundamental/blob/main/Hospital_Povoamento.sql)
