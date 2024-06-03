@@ -5,7 +5,7 @@ Sistema de Gestão Hospitalar
 Este projeto visa criar um sistema de banco de dados para um pequeno hospital local, substituindo o uso atual de planilhas e arquivos físicos. Será feita uma análise das necessidades do hospital para sugerir uma estrutura de banco de dados eficiente, facilitando a gestão de pacientes, médicos, prontuários, agendamentos e outros aspectos fundamentais.
 
 > ### Parte 1
-> Modelo Conceitual
+> **Modelo Conceitual**
 
 ## 📊 Entidades
 Aqui estão as entidades principais do sistema:
@@ -32,8 +32,8 @@ Os principais relacionamentos entre as entidades são:
 
 
 > ### Parte 2
-> Atualização do Diagrama <br/>
-> Modelo Lógico
+> **Atualização do Diagrama** <br/>
+> **Modelo Lógico**
 
 ## 📊 Entidades Atualizadas
 Aqui estão as entidades atualizadas do sistema:
@@ -60,14 +60,14 @@ Os relacionamentos atualizados entre as entidades são:
 
 
 > ### Parte 3
-> Alimentação do Database <br/>
-> Modelo Físico 
+> **Alimentação do Database** <br/>
+> **Modelo Físico** 
 
 ## 🌐 Modelo Físico
-Nesta etapa, foram desenvolvidos scripts SQL para criar e povoar as tabelas do banco de dados do Hospital Fundamental, de acordo com o modelo lógico
+Nesta etapa, foram desenvolvidos scripts SQL para criar e povoar as tabelas do banco de dados do Hospital Fundamental, de acordo com o modelo lógico.
 
-## Criação do Banco de Dados 
-- 🥼 Exemplo da criação da Tabela Espcialidade
+## 🥼 Criação do Banco de Dados 
+Exemplo da criação da Tabela Espcialidade:
 
 ```sql
 CREATE TABLE IF NOT EXISTS Especialidade (
@@ -77,8 +77,8 @@ CREATE TABLE IF NOT EXISTS Especialidade (
 ```
 🔗 [Hospital.sql](https://github.com/EmillyMLFreitas/O_Hospital_Fundamental/blob/main/Hospital.sql)
 
-## Povoamento do Banco de Dados 
-- 🧑🏽‍⚕ Exemplo da inserção de dados na Tabela Espcialidade
+## 🧑🏽‍⚕ Povoamento do Banco de Dados 
+Exemplo da inserção de dados na Tabela Espcialidade:
 
 ```sql
 INSERT INTO especialidade (Nome_especialidade) VALUES 
@@ -91,3 +91,34 @@ INSERT INTO especialidade (Nome_especialidade) VALUES
 ('Oftalmologia');
 ```
 🔗 [Hospital_Povoamento.sql](https://github.com/EmillyMLFreitas/O_Hospital_Fundamental/blob/main/Hospital_Povoamento.sql)
+
+> ### Parte 4
+> **Alterando o banco de dados**
+
+## 🛠️ Alterações e Atualizações
+Nesta parte, realizamos modificações no banco de dados existente para aprimorar o sistema do Hospital Fundamental.
+
+## 🔄 Adição da Coluna "em_atividade"
+Adicionada uma coluna "em_atividade" à tabela Medico, indicando se o médico está atuando ou não no hospital.
+
+```sql
+ALTER TABLE Medico 
+ADD COLUMN em_atividade BOOLEAN DEFAULT true;
+```
+
+## 📝 Atualização do Status dos Médicos
+Atualizados pelo menos dois médicos como inativos e os demais como ativos.
+
+```sql
+UPDATE Medico
+SET em_atividade = false
+WHERE Id_medico IN (1,5);
+```
+
+```sql
+UPDATE Medico
+SET em_atividade = true
+WHERE Id_medico NOT IN (1,5);
+```
+
+🔗 [Hospital_Alteracao.sql](https://github.com/EmillyMLFreitas/O_Hospital_Fundamental/blob/main/Hospital_Alteracao.sql)
